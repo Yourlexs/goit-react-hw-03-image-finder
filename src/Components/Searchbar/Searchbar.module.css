@@ -1,0 +1,12 @@
+.SearchForm {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 24px;
+}
+
+.input {
+  border: 1px solid #dfe1e5;
+  width: 30%;
+  padding: 15px 16px 15px 16px;
+}
