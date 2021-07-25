@@ -68,7 +68,7 @@ class App extends Component {
 
   render() {
     const { images, imageForModal, isLoading, error, showModal } = this.state;
-    const shouldRenderLoadMoreButton = images.length > 0 && !isLoading;
+    const shouldRenderLoadMoreButton = images.length >= 12 && !isLoading;
     const totalImages = images.length;
 
     return (
