@@ -17,10 +17,10 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header className="Searchbar">
+      <header className={styles.Searchbar}>
         <form className={styles.SearchForm} onSubmit={this.handleSubmit}>
-          <button type="submit" className="SearchForm-button">
-            <span className="SearchForm-button-label">Search</span>
+          <button type="submit" className={styles.SearchFormButton}>
+            <span className={styles.label}>Search</span>
           </button>
 
           <input

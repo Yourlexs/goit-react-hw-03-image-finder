@@ -2,30 +2,21 @@ import styles from './ImageGallery.module.css';
 import { Component } from 'react';
 
 class ImageGallery extends Component {
-  state = {
-    imageForModal: '',
-  };
-
-  handleClick = e => {
-    this.handleChangeImageUrl(e);
-    this.props.onClick();
-
-    this.props.onChange(this.state.imageForModal);
-  };
-
-  handleChangeImageUrl = e => {
-    this.setState({ imageForModal: e.target.srcset });
+  handleClick = largeImageURL => {
+    const { onClick } = this.props;
+    onClick(largeImageURL);
   };
 
   render() {
+    const { images } = this.props;
     return (
       <ul className={styles.ImageGallery}>
-        {this.props.images.map(({ id, webformatURL, largeImageURL }) => {
+        {images.map(({ id, webformatURL, largeImageURL }) => {
           return (
             <li
               className={styles.ImageGalleryItem}
               key={id}
-              onClick={this.handleClick}
+              onClick={() => this.handleClick(largeImageURL)}
             >
               <img
                 src={webformatURL}

@@ -39,6 +39,7 @@ class App extends Component {
     this.setState({
       imageForModal: img,
     });
+    this.toggleModal();
   };
 
   fetchImages = () => {
@@ -68,20 +69,19 @@ class App extends Component {
   render() {
     const { images, imageForModal, isLoading, error, showModal } = this.state;
     const shouldRenderLoadMoreButton = images.length > 0 && !isLoading;
+    const totalImages = images.length;
 
     return (
       <>
         <Searchbar onSubmit={this.onChangeQuery} />
-        <ImageGallery
-          images={images}
-          onChange={this.onChangeModalImg}
-          onClick={this.toggleModal}
-        />
+        <ImageGallery images={images} onClick={this.onChangeModalImg} />
         {isLoading && (
           <Loader type="Puff" color="#00BFFF" height={100} width={100} />
         )}
         {error && <p>Oops...</p>}
-        {shouldRenderLoadMoreButton && <Button onClick={this.fetchImages} />}
+        {shouldRenderLoadMoreButton && (
+          <Button onClick={this.fetchImages} totalImages={totalImages} />
+        )}
         {showModal && (
           <Modal onClose={this.toggleModal} image={imageForModal} />
         )}
